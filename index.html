@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting...</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      text-align: center;
+    }
+
+    /* Image SPV */
+    .image-spv {
+      width: 150px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    /* Message style */
+    .message {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    /* Animated dots after the message */
+    .dots::after {
+      content: '';
+      display: inline-block;
+      width: 1ch;
+      animation: dots 1s steps(3, end) infinite;
+    }
+
+    @keyframes dots {
+      0%   { content: ''; }
+      33%  { content: '.'; }
+      66%  { content: '..'; }
+      100% { content: '...'; }
+    }
+
+    /* Countdown text */
+    .countdown {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #666;
+    }
+
+    /* Progress bar container */
+    .progress-container {
+      position: relative;
+      width: 80%;
+      max-width: 500px;
+      height: 8px;
+      background: #ddd;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    /* Progress bar itself */
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: #0070f3;
+      animation: fill 5s linear forwards;
+    }
+
+    @keyframes fill {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- IMAGE -->
+  <img class="image-spv" src="placeholder.jpg" alt="Your Image Here" />
+
+  <!-- MESSAGE -->
+  <div class="message">
+    You will be redirected shortly<span class="dots"></span>
+  </div>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown">
+    Redirecting in <span id="timer">5</span> seconds
+  </div>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-container">
+    <div class="progress-bar"></div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    let countdown = 5;
+    const timerElement = document.getElementById('timer');
+
+    const interval = setInterval(() => {
+      countdown--;
+      timerElement.textContent = countdown;
+      if (countdown === 0) {
+        clearInterval(interval);
+        window.location.href = "https://new-website.com"; // Replace with your URL
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
