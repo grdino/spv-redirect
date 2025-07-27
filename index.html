@@ -17,43 +17,32 @@
       color: #333;
       text-align: center;
     }
-
-    /* Image SPV */
     .image-spv {
       width: 550px;
       height: auto;
       margin-bottom: 20px;
     }
-
-    /* Message style */
     .message {
       font-size: 1.5rem;
       margin-bottom: 10px;
     }
-
-    /* Animated dots after the message */
     .dots::after {
       content: '';
       display: inline-block;
       width: 1ch;
       animation: dots 1s steps(3, end) infinite;
     }
-
     @keyframes dots {
       0%   { content: ''; }
       33%  { content: '.'; }
       66%  { content: '..'; }
       100% { content: '...'; }
     }
-
-    /* Countdown text */
     .countdown {
       font-size: 1rem;
       margin-bottom: 20px;
       color: #666;
     }
-
-    /* Progress bar container */
     .progress-container {
       position: relative;
       width: 80%;
@@ -63,15 +52,12 @@
       border-radius: 4px;
       overflow: hidden;
     }
-
-    /* Progress bar itself */
     .progress-bar {
       height: 100%;
       width: 0;
       background: #0070f3;
-      animation: fill 5s linear forwards;
+      animation: fill 7s linear forwards;
     }
-
     @keyframes fill {
       from { width: 0; }
       to { width: 100%; }
@@ -80,12 +66,13 @@
 </head>
 <body>
 
+  <!-- IMAGE -->
+  <img class="image-spv" src="image-spv.jpg" alt="We've Moved" />
+
   <!-- MESSAGE -->
   <div class="message">
     SearchPV.com has Moved! 🎉<span class="dots"></span>
   </div>
-  <!-- IMAGE -->
-  <img class="image-spv" src="image-spv.jpg" alt="We've Moved" />
 
   <!-- MESSAGE -->
   <div class="message">
@@ -94,7 +81,7 @@
 
   <!-- COUNTDOWN -->
   <div class="countdown">
-    Redirecting in <span id="timer">5</span> seconds
+    Redirecting in <span id="timer">7</span> seconds
   </div>
 
   <!-- PROGRESS BAR -->
@@ -104,7 +91,8 @@
 
   <!-- SCRIPT -->
   <script>
-    let countdown = 9;
+    const urls = ["https://gerryray.net", "https://joselo.net"];
+    let countdown = 7;
     const timerElement = document.getElementById('timer');
 
     const interval = setInterval(() => {
@@ -112,7 +100,8 @@
       timerElement.textContent = countdown;
       if (countdown === 0) {
         clearInterval(interval);
-        window.location.href = "https://gerryray.net"; // Replace with your URL
+        const randomUrl = urls[Math.floor(Math.random() * urls.length)];
+        window.location.href = randomUrl;
       }
     }, 1000);
   </script>
